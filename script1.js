@@ -47,11 +47,14 @@ if (navigator.geolocation)
   );
 
 form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    //clear input fields
-inputDistance.value = inputCadence.value = inputDuration.value = inputElevation.value = '';
-
+  //clear input fields
+  inputDistance.value =
+    inputCadence.value =
+    inputDuration.value =
+    inputElevation.value =
+      "";
 
   ///////////////////////////////////////
   // adding leaflet library for displaying markers
@@ -72,7 +75,7 @@ inputDistance.value = inputCadence.value = inputDuration.value = inputElevation.
     .openPopup();
 });
 
-inputType.addEventListener('change', function(){
-inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+inputType.addEventListener("change", function () {
+  inputElevation.closest(".form__row").classList.toggle("form__row--hidden");
+  inputCadence.closest(".form__row").classList.toggle("form__row--hidden");
 });
