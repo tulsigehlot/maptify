@@ -56,7 +56,6 @@ class App {
 
       this.#map.on("click", this._showForm.bind(this));
     }
-    
   }
 
   _showForm(mapE) {
