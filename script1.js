@@ -18,7 +18,6 @@ class Workout {
       months[this.date.getMonth()]
     } ${this.date.getDate()}`;
   }
-
 }
 
 class Running extends Workout {
@@ -93,25 +92,23 @@ class App {
   }
 
   _loadMap(position) {
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
-      console.log(`${latitude},${longitude}`);
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+    console.log(`${latitude},${longitude}`);
 
-      ///////////////////////////////////////
-      // adding leaflet library for displaying map
+    ///////////////////////////////////////
+    // adding leaflet library for displaying map
 
-      const coords = [latitude, longitude];
-      this.#map = L.map("map").setView(coords, 13);
+    const coords = [latitude, longitude];
+    this.#map = L.map("map").setView(coords, 13);
 
-      L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(this.#map);
+    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.#map);
 
-
-      //handling clicks on maps
-      this.#map.on("click", this._showForm.bind(this));
-    
+    //handling clicks on maps
+    this.#map.on("click", this._showForm.bind(this));
   }
 
   _showForm(mapE) {
@@ -127,9 +124,9 @@ class App {
       inputDuration.value =
       inputElevation.value =
         "";
-    form.style.display = 'none';
-    form.classList.add('hidden');
-    setTimeout(() => (form.style.display = 'grid'),1000);   
+    form.style.display = "none";
+    form.classList.add("hidden");
+    setTimeout(() => (form.style.display = "grid"), 1000);
   }
 
   _toggleElevationField() {
@@ -205,7 +202,9 @@ class App {
           className: `${workout.type}-popup`,
         })
       )
-      .setPopupContent(`${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`)
+      .setPopupContent(
+        `${workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️"} ${workout.description}`
+      )
       .openPopup();
   }
 
@@ -215,7 +214,7 @@ class App {
         <h2 class="workout__title">${workout.description}</h2>
         <div class="workout__details">
           <span class="workout__icon">${
-            workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
+            workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️"
           }</span>
           <span class="workout__value">${workout.distance}</span>
           <span class="workout__unit">km</span>
@@ -227,7 +226,7 @@ class App {
         </div>
     `;
 
-    if (workout.type === 'running')
+    if (workout.type === "running")
       html += `
         <div class="workout__details">
           <span class="workout__icon">⚡️</span>
@@ -242,7 +241,7 @@ class App {
       </li>
       `;
 
-    if (workout.type === 'cycling')
+    if (workout.type === "cycling")
       html += `
         <div class="workout__details">
           <span class="workout__icon">⚡️</span>
@@ -257,7 +256,7 @@ class App {
       </li>
       `;
 
-    form.insertAdjacentHTML('afterend', html);
+    form.insertAdjacentHTML("afterend", html);
   }
 }
 
