@@ -1,7 +1,5 @@
 "use strict";
 
-//prettier ignore
-//const months =['january','febuary','march','april','may','june','july','august','september','october','november','december'];
 class Workout {
   date = new Date();
   id = (Date.now() + "").slice(-10);
