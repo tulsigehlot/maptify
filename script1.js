@@ -71,7 +71,6 @@ const inputDuration = document.querySelector(".form__input--duration");
 const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
 
-let map, mapEvent;
 
 class App {
   #map;
@@ -105,7 +104,7 @@ class App {
   _loadMap(position) {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    console.log(`${latitude},${longitude}`);
+    //console.log(`${latitude},${longitude}`);
 
     ///////////////////////////////////////
     // adding leaflet library for displaying map
@@ -120,6 +119,10 @@ class App {
 
     //handling clicks on maps
     this.#map.on("click", this._showForm.bind(this));
+
+    this.#workouts.forEach(work => {
+        this._renderWorkoutMarker(work);
+      });
   }
 
   _showForm(mapE) {
