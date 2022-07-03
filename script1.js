@@ -85,7 +85,7 @@ class App {
     //attach event handlers
     form.addEventListener("submit", this._newWorkout.bind(this));
     inputType.addEventListener("change", this._toggleElevationField);
-    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    containerWorkouts.addEventListener("click", this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -269,22 +269,21 @@ class App {
   _moveToPopup(e) {
     // bugfix : when we click on a workout before the map has loaded ,we get an error . but there is an easy fix to it :
     if (!this.#map) return;
-    
-    const workoutE1 = e.target.closest('.workout');
+
+    const workoutE1 = e.target.closest(".workout");
 
     if (!workoutE1) return;
 
-    const workout =  this.#workouts.find(
-        work => work.id === workoutE1.dataset.id
+    const workout = this.#workouts.find(
+      (work) => work.id === workoutE1.dataset.id
     );
 
-    this.#map.setView(workout.coords, this.#mapZoomLevel,{
-        animate: true,
-        pan: {
-            duration: 1,
-        },
+    this.#map.setView(workout.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
     });
   }
-
 }
 const app = new App();
