@@ -1,4 +1,3 @@
-
 "use strict";
 
 class Workout {
@@ -71,7 +70,6 @@ const inputDuration = document.querySelector(".form__input--duration");
 const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
 
-
 class App {
   #map;
   #mapZoomLevel = 13;
@@ -120,9 +118,9 @@ class App {
     //handling clicks on maps
     this.#map.on("click", this._showForm.bind(this));
 
-    this.#workouts.forEach(work => {
-        this._renderWorkoutMarker(work);
-      });
+    this.#workouts.forEach((work) => {
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
@@ -296,24 +294,24 @@ class App {
     });
   }
 
-  _setLocalStorage(){
-    localStorage.setItem('workouts' , JSON.stringify(this.#workouts));
+  _setLocalStorage() {
+    localStorage.setItem("workouts", JSON.stringify(this.#workouts));
   }
 
   _getLocalStorage() {
-    const data = JSON.parse(localStorage.getItem('workouts'));
+    const data = JSON.parse(localStorage.getItem("workouts"));
 
     if (!data) return;
 
     this.#workouts = data;
 
-    this.#workouts.forEach(work => {
+    this.#workouts.forEach((work) => {
       this._renderWorkout(work);
     });
   }
 
   reset() {
-    localStorage.removeItem('workouts');
+    localStorage.removeItem("workouts");
     location.reload();
   }
 }
